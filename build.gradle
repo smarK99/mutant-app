@@ -32,8 +32,22 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Openapi swagger
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.1.0'
+	//Envers
+	implementation 'org.hibernate.orm:hibernate-envers:6.4.4.Final'
+	// Spring Boot Starter Validation
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.5'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.jar {
+	enabled = true
+}
+
+bootJar {
+	enabled = true
 }
