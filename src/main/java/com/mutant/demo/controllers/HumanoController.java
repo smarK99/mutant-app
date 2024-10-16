@@ -2,27 +2,23 @@ package com.mutant.demo.controllers;
 
 import com.mutant.demo.entities.Humano;
 import com.mutant.demo.services.HumanoServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/personas")
+@RequestMapping("/mutant")
 public class HumanoController extends BaseControllerImpl<Humano, HumanoServiceImpl>{
-    @Override
-    public ResponseEntity<?> saveAndCheck(Humano entity) {
-        return null;
+
+    @PostMapping
+    public ResponseEntity<?> saveAndCheck(@RequestBody Humano humano){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(service.saveAndCheck(humano));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error, por favor intente más tarde\"}");
+        }
     }
 
-    @Override
-    public ResponseEntity<?> getAllHumans() {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<?> getOneHuman(Long aLong) {
-        return null;
-    }
 }
