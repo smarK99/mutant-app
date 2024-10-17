@@ -15,22 +15,27 @@ public class HumanoServiceImpl extends BaseServiceImpl<Humano,Long> implements I
 
     @Override
     public Humano saveAndCheck(Humano humano) throws Exception {
-        try {
+        try{
             List<String> dna = humano.getDna();
-            int n = dna.get(0).length();
-            char[][] matrizDna = new char[n][n];
+            int n = dna.size();
 
-            for (String row : dna) {
-                for (int i = 0; i < n; i++) {
-
+            if (humano.checkSquareMatrix(dna)) {
+                char[][] matrizDna = humano.fillMatrix(dna,n);
+                if (humano.checkRows(matrizDna) || humano.checkColumns(matrizDna)) {
+                    System.out.println("ES MUTANTE!!");
+                    humano.setIsMutant(true);
+                    return ihumanoRepository.save(humano);
+                }else {
+                    humano.setIsMutant(false);
+                    return ihumanoRepository.save(humano);
                 }
+
+            }else{
+                System.out.println("La matriz no es cuadrada");
+                return ihumanoRepository.save(humano);
             }
-
-
-            ihumanoRepository.save(humano);
-        }catch (Exception e){
+        }catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        return null;
     }
 }

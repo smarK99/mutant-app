@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/mutant")
+@RequestMapping("/humanos")
 public class HumanoController extends BaseControllerImpl<Humano, HumanoServiceImpl>{
 
-    @PostMapping
+    @PostMapping("/ismutant")
     public ResponseEntity<?> saveAndCheck(@RequestBody Humano humano){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(service.saveAndCheck(humano));
