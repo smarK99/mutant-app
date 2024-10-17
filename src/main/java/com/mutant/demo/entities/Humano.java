@@ -19,7 +19,9 @@ public class Humano extends Base{
 
     private List<String> dna;
 
-    private Boolean isMutant(List<String> dna){
+    private Boolean isMutant;
+
+    private Boolean checkMutant(List<String> dna){
 
         return false;
     }
