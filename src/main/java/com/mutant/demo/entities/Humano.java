@@ -25,12 +25,13 @@ public class Humano extends Base{
         boolean isSquare = true;
         //Chequea si la matriz es cuadrada
         for(int i = 0; i < adn.size(); i++){
-            if (adn.get(i).length() != adn.size()) {
+            if (adn.get(i).length() == adn.size()) {
+                System.out.println("Fila " + (i+1) + " chequeada exitosamente");
+            }else {
                 System.out.println("La matriz no es cuadrada!");
+                this.setIsMutant(false);
                 isSquare = false;
                 return isSquare;
-            }else {
-                System.out.println("Fila " + (i+1) + " chequeada exitosamente");
             }
         }
         return isSquare;
@@ -49,7 +50,7 @@ public class Humano extends Base{
         return matrizDna;
     }
 
-    public Boolean checkRows(char[][] matrizDna){
+    public boolean checkRows(char[][] matrizDna){
         boolean resultado = false;
 
         for (int i = 0; i < matrizDna.length; i++) {
@@ -71,7 +72,7 @@ public class Humano extends Base{
         return resultado;
     }
 
-    public Boolean checkColumns(char[][] matrizDna){
+    public boolean checkColumns(char[][] matrizDna){
         boolean resultado = false;
 
         for (int i = 0; i < matrizDna.length; i++) {
@@ -86,6 +87,27 @@ public class Humano extends Base{
                         break;
                     }
                 } else {
+                    contador = 1;
+                }
+            }
+        }
+        return resultado;
+    }
+
+    public boolean checkDiagonal(char[][] matrizDna) {
+        boolean resultado = false;
+        int contador = 1;
+
+        if(matrizDna.length >= 4){
+            for (int i = 1; i < matrizDna.length; i++) {
+                if(matrizDna[i][i] == matrizDna[i - 1][i - 1]){
+                    contador++;
+                    if (contador >= 4){
+                        System.out.println("Mutante diagonal");
+                        resultado = true;
+                        return resultado;
+                    }
+                }else{
                     contador = 1;
                 }
             }
