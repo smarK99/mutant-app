@@ -14,15 +14,15 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     @Autowired
     protected IBaseRepository<E,ID> ibaseRepository;
 
-    @Transactional
-    @Override
-    public E save(E entity) throws Exception {
-        try {
-            return ibaseRepository.save(entity);
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
+//    @Transactional
+//    @Override
+//    public E save(E entity) throws Exception {
+//        try {
+//            return ibaseRepository.save(entity);
+//        }catch (Exception e){
+//            throw new Exception(e.getMessage());
+//        }
+//    }
 
     @Transactional
     @Override
@@ -34,15 +34,15 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
         }
     }
 
-    @Transactional
-    @Override
-    public E findById(ID id) throws Exception {
-        try {
-            Optional<E> persona = ibaseRepository.findById(id);
-            return persona.get();
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
+//    @Transactional
+//    @Override
+//    public E findById(ID id) throws Exception {
+//        try {
+//            Optional<E> persona = ibaseRepository.findById(id);
+//            return persona.get();
+//        } catch (Exception e) {
+//            throw new Exception(e.getMessage());
+//        }
+//    }
 
 }

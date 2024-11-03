@@ -9,9 +9,9 @@ import java.io.Serializable;
 
 public interface IBaseController<E extends Base, ID extends Serializable>{
 
-    public ResponseEntity<?> save(@RequestBody E entity);
+//    public ResponseEntity<?> save(@RequestBody E entity);
 
     public ResponseEntity<?> getAll();
 
-    public ResponseEntity<?> getOne(@PathVariable ID id);
+//    public ResponseEntity<?> getOne(@PathVariable ID id);
 }

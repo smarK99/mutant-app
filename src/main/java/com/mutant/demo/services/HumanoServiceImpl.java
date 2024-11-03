@@ -156,4 +156,19 @@ public class HumanoServiceImpl extends BaseServiceImpl<Humano,Long> implements I
                 .build());
     }
 
+//    @Override
+//    public boolean existsDna(Humano humano) {
+//
+//        List<Humano> humanos = ihumanoRepository.findAll();
+//
+//        for (Humano h : humanos){
+//            boolean contains = humano.getDna().contains(h);
+//            if (contains == true) {
+//                System.out.println("El humano ya existe!");
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
 }

@@ -14,5 +14,6 @@ public interface IHumanoService extends IBaseService<Humano,Long>{
     public boolean checkRows(char[][] matrizDna);
     public boolean checkColumns(char[][] matrizDna);
     public boolean checkDiagonal(char[][] matrizDna);
+//    public boolean existsDna(Humano humano);
 
 }
